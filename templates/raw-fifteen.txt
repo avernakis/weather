@@ -1,0 +1,24 @@
+#timezone local#
+#roundtime True#
+#hourly#
+STAMP=#idx "%Y%m%d%H%M%S"#
+
+DIRECTION=#wind_dir "%s" "" "wind_dir_text[x]"#
+
+AVERAGE=#wind_ave "%.0f" "" "wind_mph(x)"#
+
+GUST=#wind_gust "%.0f" "" "wind_mph(x)"#
+
+HUMIDITY=#hum_out "%d%%"#
+
+RAINFALL=#rain "%.1f"#
+
+TEMP=#temp_out "%.1f"#
+
+FEELSLIKE=#calc "apparent_temp(data['temp_out'], data['hum_out'], data['wind_ave'])" "%.1f"#
+
+PRESSURE=#rel_pressure "%.0f"#
+
+TREND=#pressure_trend "%s" "" "pressure_trend_text(x)"#
+
+PREDICT=#calc "Zambretti(params, data)"#

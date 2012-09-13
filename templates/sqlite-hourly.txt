@@ -1,0 +1,5 @@
+#timezone local#
+#roundtime True#
+#hourly#
+sqlite3 /var/db/weather-hourly.db "insert into hourly (stamp, direction, average, gust, humidity, rainfall, temperature, feel, absolute, relative, trend, prediction) values ('#idx "%Y%m%d%H%M%S"#', '#wind_dir "%s" "" "wind_dir_text[x]"#', '#wind_ave "%.2f" "" "wind_mph(x)"#', '#wind_gust "%.2f" "" "wind_mph(x)"#', '#hum_out "%d"#', '#rain "%.2f"#', '#temp_out "%.1f"#', '#calc "apparent_temp(data['temp_out'], data['hum_out'], data['wind_ave'])" "%.1f"#', '#abs_pressure "%.2f"#', '#rel_pressure "%.2f"#', '#pressure_trend "%s" "" "pressure_trend_text(x)"#', '#calc "Zambretti(params, data)"#');"
+
