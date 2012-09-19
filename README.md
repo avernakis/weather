@@ -57,6 +57,23 @@ Finally, assuming you have connected the WH1080 monitor to your Raspberry Pi, yo
 * cd ~/src/pywws-12.05_r521
 * sudo python TestWeatherStation.py
 
-
-
 Many thanks to pingu512 from the Raspberry Pi forums for providing much of the above information. The next step is of course to customise, log, and display data according to your needs. In this repository you will find the custom templates, scripts, and database schema that I am using.
+
+## 2. Data Logging
+
+First, login as root, or su to root if it suits you better. Now create the folder that will hold your databases and raw data by typing:
+* mkdir /var/db && mkdir /var/db/raw
+
+Copy the file create_db.sh to /var/db and type:
+* chmod a+x create_db.sh && ./create_db.sh
+* ls -lah
+
+You should now see two files, weather-hourly.db and weather-fifteen.db
+
+One of the files created and needed by pywws is weather.ini, this should be in ~/weather/data, open this file and make the necessary changes to match the example weather.ini supplied on github.
+
+Once you have done this, copy weather-logger.sh to /root/ and type: chmod a+x weather-logger.sh
+
+Finally, type nano /etc/crontab and add the following line:
+\*/15 \* \* \* \* root /root/weather-logger.sh
+
